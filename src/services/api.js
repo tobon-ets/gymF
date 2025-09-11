@@ -19,3 +19,22 @@ export async function createEmployee(data){
         throw error;
     }
 }
+
+export async function getEmployees(){
+    try {
+        const response = await fetch(`${api_url}/employees`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            },
+        });
+        if (!response.ok){
+            throw new Error("Error al obtener empleados");
+        }
+        return await response.json();
+    } catch (error){
+        console.error("Error en la obtencion", error);
+        throw error;
+    }
+}
