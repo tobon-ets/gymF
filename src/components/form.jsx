@@ -16,6 +16,11 @@ export default function Form(){
             const result = await post(data, "/employees");
             console.log("empleado creado", result);
             alert ("Empleado registrado exitosamente");
+
+            setName("");
+            setDocument("");
+            setEmail("");
+            setRole_id("");
         } 
         catch (error){
             alert("no se pudo registrar el empleado");
