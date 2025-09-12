@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createEmployee } from "../services/api";
+import { post } from "../services/api";
 
 export default function Form(){
     const [name, setName] = useState("");

@@ -1,4 +1,4 @@
-import { getEmployees } from "../services/api";
+import { get } from "../services/api";
 import { useState, useEffect } from "react";
 
 export default function Table(){
