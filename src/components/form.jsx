@@ -13,7 +13,7 @@ export default function Form(){
         const data = {name, document, email, role_id};
     
         try {
-            const result = await createEmployee(data);
+            const result = await post(data, "/employees");
             console.log("empleado creado", result);
             alert ("Empleado registrado exitosamente");
         } 

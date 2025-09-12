@@ -6,7 +6,7 @@ export default function Table(){
     const [employees, setEmployees] = useState([]);
     const fetchEmployees = async () => {
         try {
-            const response = await getEmployees();
+            const response = await get("/employees");
             setEmployees(response.data);
         } catch (error){
             console.error("Error al obtener empleados", error);

@@ -1,8 +1,8 @@
 const api_url = "http://127.0.0.1:8000/api";
 
-export async function createEmployee(data){
+export async function post(data, $route){
     try {
-        const response = await fetch(`${api_url}/employees`, {
+        const response = await fetch(`${api_url}${$route}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -20,9 +20,9 @@ export async function createEmployee(data){
     }
 }
 
-export async function getEmployees(){
+export async function get($route){
     try {
-        const response = await fetch(`${api_url}/employees`, {
+        const response = await fetch(`${api_url}${$route}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
