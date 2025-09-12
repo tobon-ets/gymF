@@ -1,4 +1,4 @@
-import { getEmployees } from "../services/api";
+import { get } from "../services/api";
 import { useState, useEffect } from "react";
 
 export default function Table(){
@@ -24,6 +24,7 @@ export default function Table(){
             <th>Documento</th>
             <th>Email</th>
             <th>Cargo</th>
+            <th>Accion</th>
             </tr>
         </thead>
         <tbody>
@@ -32,7 +33,7 @@ export default function Table(){
                 <td>{employee.name}</td>
                 <td>{employee.document}</td>
                 <td>{employee.email}</td>
-                <td>{employee.role?.rol}</td> {/* 👈 accede al rol */}
+                <td>{employee.role?.rol}</td>
             </tr>
             ))}
         </tbody>
