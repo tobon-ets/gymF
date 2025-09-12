@@ -38,3 +38,61 @@ export async function get($route){
         throw error;
     }
 }
+
+export async function getId($route, id){
+    try {
+        const response = await fetch(`${api_url}${$route}/${id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            },
+        });
+        if (!response.ok){
+            throw new Error("Error al obtener empleado");
+        }
+        return await response.json();
+    } catch (error){
+        console.error("Error en la obtencion", error);
+        throw error;
+    }
+}
+
+export async function put(data, $route, id){
+    try {
+        const response = await fetch(`${api_url}${$route}/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+        if (!response.ok){
+            throw new Error("Error al actualizar empleado");
+        }
+        return await response.json();
+    } catch (error){
+        console.error("Error en la actualizacion", error);
+        throw error;
+    }
+}
+
+export async function del($route, id){
+    try {
+        const response = await fetch(`${api_url}${$route}/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            },
+        });
+        if (!response.ok){
+            throw new Error("Error al eliminar empleado");
+        }
+        return await response.json();
+    } catch (error){
+        console.error("Error en la eliminacion", error);
+        throw error;
+    }
+}
