@@ -24,7 +24,7 @@ export default function Notification({ message, type, onClose }){
 
   return(
     <div
-          style={{
+      style={{
         ...notificationStyles[type || "info"],
         position: "fixed",
         top: "20px",

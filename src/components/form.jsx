@@ -33,7 +33,7 @@ export default function Form({ initialData = null, onSubmit }) {
       const response = await onSubmit(data);
       console.log(response);
 
-      if (response?.status === "success"){
+      if (response.status === 201){
         setMessage(response.message);
         setMessageType("success"); 
         setIsLoading(false);
@@ -45,12 +45,13 @@ export default function Form({ initialData = null, onSubmit }) {
       } else {
         setMessage(response?.message || "Ocurrió un error inesperado");
         setMessageType("error");
-        setIsLoading(false);
       }
     } catch (error) {
-      setMessage("Hubo un error de red o de comunicación.");
-      setMessageType("error");
-      setIsLoading(false);
+        const backendMessage = error.data?.message || "Hubo un error de validación o de red.";
+        setMessage(backendMessage);
+        setMessageType("error");
+      } finally {
+        setIsLoading(false);
     } 
   };
 
@@ -59,19 +60,19 @@ export default function Form({ initialData = null, onSubmit }) {
     <form onSubmit={handleSubmit}>
       <div>
         <label>Nombre: </label>
-        <input value={name} onChange={(e) => setName(e.target.value)} />
+        <input value={name} onChange={(e) => setName(e.target.value)} required/>
       </div>
       <div>
         <label>Documento: </label>
-        <input value={document} onChange={(e) => setDocument(e.target.value)} />
+        <input value={document} onChange={(e) => setDocument(e.target.value)} required/>
       </div>
       <div>
         <label>Email: </label>
-        <input value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input value={email} onChange={(e) => setEmail(e.target.value)} required/>
       </div>
       <div>
         <label>Cargo: </label>
-        <input value={role_id} onChange={(e) => setRole_id(e.target.value)} />
+        <input value={role_id} onChange={(e) => setRole_id(e.target.value)} required/>
       </div>
 
       <button type="submit" disabled={isLoading}>

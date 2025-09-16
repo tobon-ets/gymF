@@ -5,6 +5,7 @@ export default function DeleteButton({ url, document, onDelete }) {
     const deleteBton = async () => {
         try {
             const response = await del(`${url}`, `${document}`);
+            console.log(response);
 
             if (response.status === 200) {
                 onDelete(document);  // Actualiza el estado de la tabla
